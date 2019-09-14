@@ -16,7 +16,7 @@
 </div>
 
 {% block content %}
-  <h2 style="color: #1B365D;">MATRÍCULA CADASTRADA</h2>
+<h2 style="color: #1B365D;">MATRÍCULA CADASTRADA</h2>
 
 <div align="center">
 
@@ -24,12 +24,24 @@
     <span>{{ matricula.cpf }}</span>
     <span>{{ matricula.ra }}</span>
     <span>{{ matricula.curso }}</span>
-    <span>{{ matricula.curso.materias }}</span>
+
+    {% for materia in materiasCurso %}
+
+    <span>{{ materia.descricao }}</span>
+    <span>{{ materia.nome_professor }}</span>
+    <span>{{ materia.carga_horaria|stringformat:"i" }} Horas</span>
+
+    {% endfor %}
+
+
     <span>{{ matricula.dt_criacao }}</span>
     <span>{{ matricula.observacoes }}</span>
 
+
+
+
     <div class="form-group">
-            <a href="{% url 'url_lista' %}" class="btn btn-warning">Matrículas Cadastradas</a>
+        <a href="{% url 'url_lista' %}" class="btn btn-warning">Matrículas Cadastradas</a>
     </div>
 </div>
 

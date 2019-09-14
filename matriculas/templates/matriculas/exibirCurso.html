@@ -1,0 +1,45 @@
+{% load static %}
+<html>
+<head>
+    <title>CRUD DJANGO</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+    <meta charset="UTF-8">
+</head>
+<body class="ground">
+
+<div class="page-header">
+    <h1>CRUD DJANGO</h1>
+</div>
+
+<h1 style="color: #1B365D; margin-top: 3rem;">CURSO DE {{ nomeCurso }}</h1>
+
+<div style="margin-top: 3rem" align="center">
+
+    <table style="border: solid; 1px; ">
+        <tr style="background-color: #2d6ca2">
+        <th style="diplay: block; text-align: center;">MATÉRIA</th>
+        <th style="width: 25%; text-align: center;">NOME DO PROFESSOR</th>
+        <th style="diplay: block; text-align: center;">CARGA HORARIA</th>
+        </tr>
+        {% for materia in materiasCurso %}
+        <tr style="background-color: #A7BCD6; border: solid; 1px;">
+            <td style="text-align: center;">{{ materia.descricao }}</td>
+            <td style="text-align: center;">{{ materia.nome_professor }}</td>
+            <td style="text-align: center;">{{ materia.carga_horaria|stringformat:"i" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div style="margin-top: 12rem">
+    </div>
+
+    <div style="margin-top: 3rem" align="center">
+        <a class="btn btn-primary" href="{% url 'url_lista' %}">Voltar</a>
+    </div>
+</div>
+
+</body>
+</html>

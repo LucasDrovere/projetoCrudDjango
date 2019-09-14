@@ -8,7 +8,7 @@ class Materia(models.Model):
     carga_horaria = models.FloatField(max_length=4)
 
     def __str__(self):
-        return self.descricao + ' - ' + self.nome_professor + ' - ' + self.carga_horaria
+        return self.descricao + ' - ' + self.nome_professor
 
 class Curso(models.Model):
     descricao = models.CharField(max_length=100)

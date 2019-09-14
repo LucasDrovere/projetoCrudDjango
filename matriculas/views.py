@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 import datetime
-from .models import Matricula, Materia
+from .models import Matricula, Materia, Curso
 from .form import MatriculaForm
+from pprint import pprint
+
 
 def home(request):
     # data = {}
@@ -24,7 +26,7 @@ def cadastrarMatricula(request):
 
     if form.is_valid():
         form.save()
-        return redirect('url_cadastrada')
+        return redirect('url_lista')
 
     data['form'] = form
     return render(request, 'matriculas/cadastrarMatricula.html', data)
@@ -46,8 +48,14 @@ def deletarMatricula(request, pk):
     matricula.delete()
     return redirect('url_lista')
 
-def matriculaCadastrada(request):
+def exibirCurso(request, pk):
     data = {}
-    data['matricula'] = Matricula.objects.last()
+    matricula = Matricula.objects.get(pk=pk)
+    materiasCurso = matricula.curso.materias.all()
 
-    return render(request, 'matriculas/matriculaCadastrada.html', data)
+    data['matricula'] = matricula
+    data['materiasCurso'] = materiasCurso
+
+    data['nomeCurso'] = matricula.curso.descricao.upper()
+
+    return render(request, 'matriculas/exibirCurso.html', data)

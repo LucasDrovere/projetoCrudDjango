@@ -33,7 +33,9 @@
             <td width="30%" style=" text-align: center;">{{ matricula.nome }}</td>
             <td style="text-align: center;">{{ matricula.cpf }}</td>
             <td style="text-align: center;">{{ matricula.ra }}</td>
-            <td style="text-align: center;">{{ matricula.curso.descricao }}</td>
+
+            <td style="text-align: center;"><a style="margin-left: 1%"
+                   href="{% url 'url_curso' matricula.id%}">{{ matricula.curso.descricao }}</a></td>
 
             <td style="text-align: center;">
                 <a type="button" class="btn btn-info" href="{% url 'url_editar' matricula.id%}">E</a>
