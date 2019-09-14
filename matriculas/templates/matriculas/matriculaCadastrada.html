@@ -1,0 +1,38 @@
+{% load static %}
+{% load widget_tweaks %}
+<html>
+<head>
+    <title>CRUD DJANGO</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+    <meta charset="UTF-8">
+</head>
+<body class="ground">
+
+<div class="page-header">
+    <h1>CRUD DJANGO</h1>
+</div>
+
+{% block content %}
+  <h2 style="color: #1B365D;">MATRÍCULA CADASTRADA</h2>
+
+<div align="center">
+
+    <span>{{ matricula.nome }}</span>
+    <span>{{ matricula.cpf }}</span>
+    <span>{{ matricula.ra }}</span>
+    <span>{{ matricula.curso }}</span>
+    <span>{{ matricula.curso.materias }}</span>
+    <span>{{ matricula.dt_criacao }}</span>
+    <span>{{ matricula.observacoes }}</span>
+
+    <div class="form-group">
+            <a href="{% url 'url_lista' %}" class="btn btn-warning">Matrículas Cadastradas</a>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
