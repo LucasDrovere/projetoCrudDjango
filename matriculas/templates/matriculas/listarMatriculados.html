@@ -39,8 +39,7 @@
 
             <td style="text-align: center;">
                 <a type="button" class="btn btn-info" href="{% url 'url_editar' matricula.id%}">E</a>
-                <a style="margin-left: 1%" type="button" class="btn btn-danger"
-                   href="{% url 'url_deletar' matricula.id%}">X</a>
+                <a style="margin-left: 1%" type="button" class="btn btn-danger" href="{% url 'url_deletar' matricula.id%}" onclick="return confirm('Você tem certeza que deseja excluir esse registro?')">X</a>
             </td>
         </tr>
         {% endfor %}

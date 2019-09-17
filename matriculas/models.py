@@ -21,7 +21,7 @@ class Matricula(models.Model):
     nome = models.CharField(max_length=100)
     cpf = cpffield.CPFField('CPF', max_length=11, unique=True)
     ra = models.CharField('RA', unique=True, max_length=8)
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, default=None)
     dt_criacao = models.DateTimeField(auto_now_add=True)
     observacoes = models.TextField(null=True, blank=True)
 

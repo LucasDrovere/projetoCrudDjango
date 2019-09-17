@@ -17,24 +17,19 @@
 
 
 {% block content %}
-  <h2 style="color: #1B365D;">CADASTRO DE MATRÍCULA</h2>
+<h2 style="color: #1B365D;">CADASTRO DE MATRÍCULA</h2>
 <div align="center">
 
     <form method="post" style="width: 35%;">
         {% csrf_token %}
 
-        {% for hidden in form.hidden_fields %}
-        {{ hidden }}
-        {% endfor %}
-
         {% for field in form.visible_fields %}
         <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {{ field|add_class:'form-control' }}
-
+            {{ field | add_class:'form-control' }}
 
             {% for error in field.errors %}
-            <span class="help-block">{{ error }}</span>
+            <span class="help-block" style="color: red">{{ error }}</span>
             {% endfor %}
         </div>
         {% endfor %}
