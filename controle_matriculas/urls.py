@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from matriculas.views import home, listarMatriculados, cadastrarMatricula, editarMatricula, deletarMatricula, \
-    exibirCurso
+    exibirCurso, detalharAluno
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('editarMatricula/<int:pk>', editarMatricula, name='url_editar'),
     path('deletarMatricula/<int:pk>', deletarMatricula, name='url_deletar'),
     path('exibirCurso/<int:pk>', exibirCurso, name='url_curso'),
+    path('detalharAluno/<str:cpf>', detalharAluno, name='url_aluno'),
 ]

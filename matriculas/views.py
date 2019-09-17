@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import datetime
-from .models import Matricula, Materia, Curso
-from .form import MatriculaForm
+from .models import Matricula, Materia, Curso, Aluno
+from .form import MatriculaForm, AlunoForm
 from pprint import pprint
 
 
@@ -58,4 +58,24 @@ def exibirCurso(request, pk):
 
     data['nomeCurso'] = matricula.curso.descricao.upper()
 
-    return render(request, 'matriculas/exibirCurso.html', data)
+    return render(request, 'cursos/exibirCurso.html', data)
+
+def detalharAluno(request, cpf):
+    data = {}
+    matricula = Matricula.objects.get(cpf=cpf)
+
+    aluno = Aluno()
+    aluno.nome = matricula.nome
+    aluno.cpf = matricula.cpf
+    aluno.curso = matricula.curso.descricao
+
+    form = AlunoForm(request.POST or None, instance=aluno)
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_aluno')
+
+    data['form'] = form
+    data['matricula'] = matricula
+
+    return render(request, 'alunos/detalharAluno.html', data)

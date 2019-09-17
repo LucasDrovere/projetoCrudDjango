@@ -23,21 +23,24 @@
     <table style="border: solid; 1px; ">
         <tr style="background-color: #2d6ca2">
             <th style="diplay: block; text-align: center;">NOME</th>
-            <th style="width: 20%; text-align: center; ">CPF</th>
-            <th style="width: 20%; text-align: center;">RA</th>
-            <th style="width: 20%; text-align: center;">CURSO</th>
-            <th style="width: 20%; text-align: center;">AÇÕES</th>
+            <th style="width: 12%; text-align: center; ">CPF</th>
+            <th style="width: 12%; text-align: center;">RA</th>
+            <th style="width: 12%; text-align: center;">CURSO</th>
+            <th style="width: 12%; text-align: center;">AÇÕES</th>
         </tr>
         {% for matricula in matriculas %}
         <tr style="background-color: #A7BCD6; border: solid; 1px;">
-            <td width="30%" style=" text-align: center;">{{ matricula.nome }}</td>
+            <td width="32%" style=" text-align: center;">
+                <a style="margin-left: 1%"
+                   href="{% url 'url_aluno' matricula.cpf%}">{{ matricula.nome | title | truncatechars:28 }}</a>
+            </td>
             <td style="text-align: center;">{{ matricula.cpf }}</td>
             <td style="text-align: center;">{{ matricula.ra }}</td>
 
             <td style="text-align: center;"><a style="margin-left: 1%"
-                   href="{% url 'url_curso' matricula.id%}">{{ matricula.curso.descricao }}</a></td>
+                   href="{% url 'url_curso' matricula.id %}">{{ matricula.curso.descricao }}</a></td>
 
-            <td style="text-align: center;">
+            <td style="text-align: center; width: 12%">
                 <a type="button" class="btn btn-info" href="{% url 'url_editar' matricula.id%}">E</a>
                 <a style="margin-left: 1%" type="button" class="btn btn-danger" href="{% url 'url_deletar' matricula.id%}" onclick="return confirm('Você tem certeza que deseja excluir esse registro?')">X</a>
             </td>
