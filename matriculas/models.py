@@ -29,11 +29,11 @@ class Matricula(models.Model):
         return self.nome + ' - ' + self.ra
 
 class Aluno(models.Model):
-    nome = models.CharField(max_length=100)
-    dt_nascimento = models.DateTimeField(auto_now_add=False, editable=True)
-    cpf = cpffield.CPFField('CPF', max_length=14, unique=True)
-    rg = models.CharField('RG', unique=True, max_length=9)
-    cep = models.CharField('CEP',  max_length=9)
-    curso = models.CharField(max_length=100)
-    bolsista = models.BooleanField(default=False)
+    nome = models.CharField(null=True, blank=True, max_length=100)
+    dt_nascimento = models.DateTimeField(null=True, blank=True)
+    cpf = cpffield.CPFField('CPF', null=True, blank=True, max_length=14)
+    rg = models.CharField('RG', unique=True, max_length=12, null=True, blank=True)
+    cep = models.CharField('CEP',  max_length=9, null=True, blank=True)
+    curso = models.CharField(null=True, blank=True, max_length=100)
+    bolsista = models.BooleanField(default=False, blank=True)
     observacoes = models.TextField(null=True, blank=True)

@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea, TextInput, CharField, ModelChoiceField, Select
+from django.forms import ModelForm, Textarea, TextInput, CharField, ModelChoiceField, Select, DateTimeField
 from .models import Matricula, Materia, Curso, Aluno
 
 class MatriculaForm(ModelForm):
@@ -14,11 +14,17 @@ class MatriculaForm(ModelForm):
         }
 
 class AlunoForm(ModelForm):
+
     class Meta:
         model = Aluno
         fields = ['nome', 'dt_nascimento', 'cpf', 'rg', 'cep', 'curso', 'bolsista', 'observacoes']
         widgets = {
             'nome': TextInput(attrs={'readonly':'readonly'}),
+            'dt_nascimento': TextInput(attrs={'placeholder': 'Ex 01/01/2001', 'data-mask': "00/00/0000"}),
             'curso': TextInput(attrs={'readonly':'readonly'}),
             'cpf': TextInput(attrs={'readonly':'readonly'}),
+            'rg': TextInput(attrs={'placeholder': 'RG do aluno', 'data-mask':"00.000.000-0"}),
+            'cep': TextInput(attrs={'placeholder': 'CEP do endereço do aluno', 'data-mask':"00000-000"}),
+            'observacoes': Textarea(attrs={'rows': 5, 'cols': 22, 'style': 'resize:none;',
+                                           'placeholder': 'Observações a do aluno'}),
         }
