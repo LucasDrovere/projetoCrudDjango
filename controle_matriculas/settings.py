@@ -28,8 +28,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-# https://github.com/django-extensions/django-extensions
-# https://stackoverflow.com/questions/15454008/how-to-reset-db-in-django-i-get-a-command-reset-not-found-error
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +39,17 @@ INSTALLED_APPS = [
     'matriculas',
     'cpffield',
     'widget_tweaks',
+
+    # django_extensions
+    # https://github.com/django-extensions/django-extensions
+    # https://stackoverflow.com/questions/15454008/how-to-reset-db-in-django-i-get-a-command-reset-not-found-error
     'django_extensions',
+
+    # https://pypi.org/project/django-bootstrap-datepicker-plus/
+    'bootstrap_datepicker_plus',
+
+    # https://pypi.org/project/django-bootstrap4/
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

@@ -42,6 +42,10 @@ def editarMatricula(request, pk):
 
 def deletarMatricula(request, pk):
     matricula = Matricula.objects.get(pk=pk)
+    try:
+        Aluno.objects.filter(cpf=matricula.cpf).delete()
+    except Aluno.DoesNotExist:
+        pprint('Matricula sem Aluno')
     matricula.delete()
     return redirect('url_lista')
 
