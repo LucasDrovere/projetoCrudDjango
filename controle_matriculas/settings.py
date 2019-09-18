@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'matriculas',
     'cpffield',
     'widget_tweaks',
-
     # django_extensions
     # https://github.com/django-extensions/django-extensions
     # https://stackoverflow.com/questions/15454008/how-to-reset-db-in-django-i-get-a-command-reset-not-found-error

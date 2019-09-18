@@ -18,6 +18,21 @@
 <div class="page-header">
     <h1>CRUD DJANGO</h1>
 </div>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success'%}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'info' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'warning' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% elif message.tags == 'error' %}
+<script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+
 {% block content %}
 <h2 style="color: #1B365D;">DETALHAMENTO DO ALUNO</h2>
 <div align="center">

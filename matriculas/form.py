@@ -20,7 +20,7 @@ class MatriculaForm(ModelForm):
 class AlunoForm(ModelForm):
     class Meta:
         model = Aluno
-        fields = ['nome', 'dt_nascimento', 'cpf', 'rg', 'cep', 'curso', 'bolsista', 'observacoes']
+        fields = ['foto', 'nome', 'dt_nascimento', 'cpf', 'rg', 'cep', 'curso', 'bolsista', 'observacoes']
         widgets = {
             'nome': TextInput(attrs={'readonly': 'readonly'}),
             'dt_nascimento': DatePickerInput(options={
@@ -36,5 +36,5 @@ class AlunoForm(ModelForm):
             'observacoes': Textarea(attrs={'rows': 5, 'cols': 22, 'style': 'resize:none;',
                                            'placeholder': 'Observações a do aluno'}),
             'bolsista': CheckboxInput(attrs={
-                'style':'width:20px;height:20px;'})
+                'style':'width:20px;height:20px;', 'id': 'checkbolsista'})
         }

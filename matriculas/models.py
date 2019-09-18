@@ -37,3 +37,5 @@ class Aluno(models.Model):
     curso = models.CharField(null=True, blank=True, max_length=100)
     bolsista = models.BooleanField(default=False, blank=True)
     observacoes = models.TextField('Observações', null=True, blank=True)
+    foto = models.ImageField(upload_to='static/images/', default='static/images/pipiu.jpg')
+

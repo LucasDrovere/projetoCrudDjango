@@ -3,6 +3,7 @@ import datetime
 from .models import Matricula, Materia, Curso, Aluno
 from .form import MatriculaForm, AlunoForm
 from pprint import pprint
+from django.contrib import messages
 
 def home(request):
     # data = {}
@@ -78,6 +79,8 @@ def detalharAluno(request, cpf):
 
     if request.method == 'POST':
         form.save()
+        messages.success(request, 'aaaaaa')
+        return redirect('url_lista')
 
     data['form'] = form
     data['matricula'] = matricula
