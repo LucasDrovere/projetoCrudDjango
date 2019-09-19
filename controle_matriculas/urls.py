@@ -20,7 +20,7 @@ from matriculas.views import home, listarMatriculados, cadastrarMatricula, edita
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
+    path('', home, name='url_home'),
     path('listarMatriculados/', listarMatriculados, name='url_lista'),
     path('cadastrarMatricula/', cadastrarMatricula, name='url_cadastro'),
     path('editarMatricula/<int:pk>', editarMatricula, name='url_editar'),

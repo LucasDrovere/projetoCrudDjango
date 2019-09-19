@@ -20,7 +20,7 @@ class MatriculaForm(ModelForm):
 class AlunoForm(ModelForm):
     class Meta:
         model = Aluno
-        fields = ['foto', 'nome', 'dt_nascimento', 'cpf', 'rg', 'cep', 'curso', 'bolsista', 'observacoes']
+        fields = ['nome', 'dt_nascimento', 'cpf', 'rg', 'cep', 'curso', 'bolsista', 'observacoes']
         widgets = {
             'nome': TextInput(attrs={'readonly': 'readonly'}),
             'dt_nascimento': DatePickerInput(options={

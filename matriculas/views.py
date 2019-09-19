@@ -4,6 +4,7 @@ from .models import Matricula, Materia, Curso, Aluno
 from .form import MatriculaForm, AlunoForm
 from pprint import pprint
 from django.contrib import messages
+import time
 
 def home(request):
     # data = {}
@@ -79,7 +80,7 @@ def detalharAluno(request, cpf):
 
     if request.method == 'POST':
         form.save()
-        messages.success(request, 'aaaaaa')
+        time.sleep(1)
         return redirect('url_lista')
 
     data['form'] = form
