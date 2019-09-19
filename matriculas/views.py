@@ -5,6 +5,8 @@ from .form import MatriculaForm, AlunoForm
 from pprint import pprint
 from django.contrib import messages
 import time
+from django.core.paginator import Paginator
+
 
 def home(request):
     # data = {}
@@ -18,11 +20,14 @@ def listarMatriculados(request):
     data = {}
     matriculas = Matricula.objects.all()
 
-    if len(matriculas) > 0:
-        data['matriculas'] = matriculas
-        pprint(matriculas)
-    else:
-        messages.error(request, 'Não existem registros de matrículas cadastrados no sistema.', extra_tags='alert')
+    paginator = Paginator(matriculas, 6)
+
+    page = request.GET.get('page')
+
+    matriculasPaginadas = paginator.get_page(page)
+
+    data['matriculas'] = matriculasPaginadas
+
     return render(request, 'matriculas/listarMatriculados.html', data)
 
 def cadastrarMatricula(request):

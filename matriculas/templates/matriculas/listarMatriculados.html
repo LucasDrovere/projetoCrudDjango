@@ -20,7 +20,7 @@
 
     {% if matriculas|length > 0%}
 
-    <table style="border: solid; 1px; border-color: #1B365D">
+    <table style="border: solid; 1px; border-color: #1B365D; width: 70%;">
         <tr style="background-color: #2d6ca2">
             <th style="width: 15%; text-align: center; color: #1B365D">NOME</th>
             <th style="width: 10%; text-align: center; color: #1B365D">RA</th>
@@ -29,22 +29,50 @@
         </tr>
         {% for matricula in matriculas %}
         <tr style="background-color: #A7BCD6; border: solid; 1px; border-color: #1B365D">
-            <td width="32%" style=" text-align: center;">
-                <a style="margin-left: 1%"
-                   href="{% url 'url_aluno' matricula.cpf%}">{{ matricula.nome | title | truncatechars:28 }}</a>
+            <td width="20%" height="45" style=" text-align: center;">
+                <a href="{% url 'url_aluno' matricula.cpf%}">{{ matricula.nome | title | truncatechars:22 }}</a>
             </td>
-            <td style="text-align: center;">{{ matricula.ra }}</td>
+            <td width="10%" style="text-align: center;">{{ matricula.ra }}</td>
 
-            <td style="text-align: center;"><a style="margin-left: 1%"
+            <td width="10%" style="text-align: center;"><a style="margin-left: 1%"
                    href="{% url 'url_curso' matricula.id %}">{{ matricula.curso.descricao }}</a></td>
 
-            <td style="text-align: center; width: 12%">
-                <a type="button" class="btn btn-info" href="{% url 'url_editar' matricula.id%}">E</a>
-                <a style="margin-left: 1%" type="button" class="btn btn-danger" id='linkButton' href="{% url 'url_deletar' matricula.id%}" onclick="return confirm('Você tem certeza que deseja excluir esse registro?')">X</a>
+            <td width="10%" style="text-align: center;">
+                <a type="button" class="btn btn-warning btn-sm" href="{% url 'url_editar' matricula.id%}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a style="margin-left: 1%" type="button" class="btn btn-danger btn-sm" id='linkButton' href="{% url 'url_deletar' matricula.id%}" onclick="return confirm('Você tem certeza que deseja excluir esse registro?')"><span class="glyphicon glyphicon-trash"></span></a>
+
             </td>
         </tr>
         {% endfor %}
     </table>
+
+    <div class="absolute">
+        {% if matriculas.has_other_pages %}
+            <ul class="pagination">
+            {% if matriculas.has_previous %}
+              <li><a href="?page={{ matriculas.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in matriculas.paginator.page_range %}
+              {% if matriculas.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if matriculas.has_next %}
+              <li><a href="?page={{ matriculas.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+            </ul>
+        {% endif %}
+
+        <div style="position: relative; margin-top: 2.5rem">
+            <a class="btn btn-primary" href="{% url 'url_cadastro' %}">Nova Matrícula</a>
+        </div>
+    </div>
 
     {% else %}
 
@@ -54,11 +82,11 @@
 
     <div style="margin-top: 12rem">
     </div>
-    {% endif %}
 
-    <div style="margin-top: 3rem" align="center">
-        <a class="btn btn-primary" href="{% url 'url_cadastro' %}">Nova Matrícula</a>
-    </div>
+    <div style="margin-top: 5rem;position: relative;" align="center">
+       <a class="btn btn-primary" href="{% url 'url_cadastro' %}">Nova Matrícula</a>
+   </div>
+    {% endif %}
 </div>
 
 </body>

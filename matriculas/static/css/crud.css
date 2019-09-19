@@ -66,3 +66,16 @@ h1, h2, h3, h4 {
     opacity: 0;
   }
 }
+
+.relative {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+.absolute {
+    position: absolute;
+    top: 72%;
+    right: 39%;
+    width: 300px;
+    height: 200px
+}
