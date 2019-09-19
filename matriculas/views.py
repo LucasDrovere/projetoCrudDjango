@@ -16,7 +16,13 @@ def home(request):
 
 def listarMatriculados(request):
     data = {}
-    data['matriculas'] = Matricula.objects.all()
+    matriculas = Matricula.objects.all()
+
+    if len(matriculas) > 0:
+        data['matriculas'] = matriculas
+        pprint(matriculas)
+    else:
+        messages.error(request, 'Não existem registros de matrículas cadastrados no sistema.', extra_tags='alert')
     return render(request, 'matriculas/listarMatriculados.html', data)
 
 def cadastrarMatricula(request):
