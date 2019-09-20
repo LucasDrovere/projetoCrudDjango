@@ -16,7 +16,7 @@
 
 <h2 style="color: #1B365D; margin-top: 4rem;">ALUNOS MATRICULADOS</h2>
 
-{% if matriculas|length > 0 %}
+{% if matriculas|length > 0 or matriculasPaginadas|length > 0  %}
 
 <div style="margin-top: 4rem;">
     <div class="col-sm-4">
@@ -64,7 +64,7 @@
         </tbody>
     </table>
 
-    <div class="absolute" align="center" style="top: 75%; height: 1%;">
+    <div  align="center" style="top: 75%; height: 1%;">
         {% if matriculas.has_other_pages %}
             <ul class="pagination">
             {% if matriculas.has_previous %}
@@ -88,13 +88,13 @@
         {% endif %}
     </div>
 
-    {% else %}
+{% else %}
     <p style="margin-top: 8rem" align="center" class="alert alert-danger">Sem itens na lista.</p>
 
     <div style="position: relative; margin-top: 4rem" align="center">
         <a class="btn btn-primary" href="{% url 'url_cadastro' %}">Nova Matrícula</a>
     </div>
-    {% endif %}
+{% endif %}
 
 </div>
 </body>

@@ -20,11 +20,24 @@ def listarMatriculados(request):
     data = {}
     matriculas = Matricula.objects.all()
 
-    paginator = Paginator(matriculas, 6)
-
     page = request.GET.get('page')
+    matriculasPaginadas = []
 
-    matriculasPaginadas = paginator.get_page(page)
+    search = request.GET.get('search')
+    if search:
+        matriculasFiltradas = Matricula.objects.filter(nome__icontains=search) | \
+                              Matricula.objects.filter(ra__icontains=search) | \
+                              Matricula.objects.filter(cpf__icontains=search)
+
+        if len(matriculasFiltradas):
+            paginator = Paginator(matriculasFiltradas, 6)
+            matriculasPaginadas = paginator.get_page(page)
+        else:
+            paginator = Paginator(matriculas, 6)
+            matriculasPaginadas = paginator.get_page(page)
+    else:
+        paginator = Paginator(matriculas, 6)
+        matriculasPaginadas = paginator.get_page(page)
 
     data['matriculas'] = matriculasPaginadas
 
