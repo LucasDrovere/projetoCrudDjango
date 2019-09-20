@@ -13,22 +13,22 @@
     <link rel="stylesheet" href="{% static 'css/crud.css' %}">
     <meta charset="UTF-8">
 </head>
-<body class="ground">
+<body >
 
-<div class="page-header">
+<div class="page-header" style="background-color: #357ebd">
     <h1>CRUD DJANGO</h1>
 </div>
 
 {% block content %}
-<h2 style="color: #1B365D;">DETALHAMENTO DO ALUNO</h2>
-<div align="center">
+<h2 style="color: #1B365D; margin-top: 4rem;">DETALHAMENTO DO ALUNO</h2>
+<div align="center" style="margin-top: 4rem;">
 
     <form method="post" style="width: 35%;">
         {% csrf_token %}
 
         {% for field in form.visible_fields %}
         <div class="form-group">
-            <label style="color: #1B365D" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <label style="color: #1B365D"  for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field | add_class:'form-control' }}
 
             {% for error in field.errors %}
@@ -52,7 +52,6 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-
     toastr.options = {
                 "closeButton": false,
                 "debug": false,
