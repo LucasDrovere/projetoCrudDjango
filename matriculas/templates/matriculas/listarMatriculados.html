@@ -21,7 +21,7 @@
 <div style="margin-top: 4rem;">
     <div class="col-sm-4">
         <form action="." method="GET" class="form-inline">
-            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar" style="margin-left: 29%;">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar Nome, R.A ou CPF" style="margin-left: 29%;">
             <input type="submit" class="btn btn-primary"  value="OK">
         </form>
     </div>
@@ -89,7 +89,7 @@
     </div>
 
 {% else %}
-    <p style="margin-top: 8rem" align="center" class="alert alert-danger">Sem itens na lista.</p>
+    <p style="margin-top: 8rem; width: 80%;" align="center" class="alert alert-danger">Sem itens na lista.</p>
 
     <div style="position: relative; margin-top: 4rem" align="center">
         <a class="btn btn-primary" href="{% url 'url_cadastro' %}">Nova Matrícula</a>
